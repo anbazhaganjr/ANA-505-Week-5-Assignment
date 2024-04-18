@@ -87,8 +87,14 @@ print(total_team_stats)
 
 library(ggplot2)
 
-# Visualization: Goals distribution
+# Visualization: Goals distribution based on team stats
 ggplot(team_stats, aes(x = reorder(team1, total_goals), y = total_goals)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Total Goals by Team", x = "Team", y = "Total Goals")
+
+# Visualization: Goals distribution of combined teams
+ggplot(total_team_stats, aes(x = reorder(team, total_goals), y = total_goals)) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   labs(title = "Total Goals by Team", x = "Team", y = "Total Goals")
